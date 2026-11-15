@@ -1,9 +1,9 @@
 (function () {
   var page = document.body.getAttribute("data-page");
   var L = [["About","about"],["Projects","projects"],["Services","services"],["Team","team"],["Blog","blog"],["Contact","contact"]];
-  var nav = '<header class="nav" id="nav"><a href="index.html" class="brand"><img src="assets/logo.png" alt="Mitrakar logo"><span>MITRAKAR</span></a><button class="burger" id="burger" aria-label="Menu">Menu</button><nav id="menu">' +
+  var nav = '<header class="nav" id="nav"><a href="index.html" class="brand"><img src="' + LOGO + '" alt="Mitrakar logo"><span>MITRAKAR</span></a><button class="burger" id="burger" aria-label="Menu">Menu</button><nav id="menu">' +
     L.map(function (x) { return '<a href="' + x[1] + '.html"' + (x[1] === page ? ' class="act"' : '') + '>' + x[0] + '</a>'; }).join("") + '</nav></header>';
-  var foot = '<footer><div class="wrap fgrid"><div><img src="assets/logo.png" alt="" class="flogo"><h3>Designing the future of space.</h3></div>' +
+  var foot = '<footer><div class="wrap fgrid"><div><img src="' + LOGO + '" alt="" class="flogo"><h3>Designing the future of space.</h3></div>' +
     '<div><h4>Contact us</h4><p><a href="tel:+917071723383">+91 70717 23383</a></p><p>17/2 New Palasia,<br>Indore, Madhya Pradesh 452001</p><p><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Mitrakar+Architectural+Designers+17%2F2+New+Palasia+Indore">View on map</a></p></div>' +
     '<div><h4>Site map</h4><p><a href="about.html">About</a></p><p><a href="services.html">Services</a></p><p><a href="projects.html">Projects</a></p><p><a href="team.html">Team</a></p><p><a href="blog.html">Blog</a></p></div>' +
     '<div><h4>Expertise</h4>' + D.SERVICES.map(function (s) { return '<p><a href="service.html?p=' + s.s + '">' + s.n.replace('PMC – Project Management Consultancy', 'PMC') + '</a></p>'; }).join("") + '</div></div>' +

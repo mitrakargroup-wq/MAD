@@ -22,10 +22,12 @@ var D = (function () {
       { n: "Hospitality Group", i: 2 }, { n: "Residential Clients", i: 4 }
     ],
     SERVICES: [
-      { n: "Architecture", d: "Complete architectural design from concept sketches to working drawings for homes, offices and developments." },
-      { n: "Interior Design", d: "Space planning, materials, lighting and custom furniture that match the architecture." },
-      { n: "Planning & Approvals", d: "Technical documentation and coordination with local authorities and consultants." },
-      { n: "Project Management", d: "On-site supervision, vendor coordination and quality control through handover." }
+      { s: "architecture-planning", k: ["Architectural design", "Master planning", "Residential projects", "Commercial projects", "Hospitality projects"], n: "Architecture & Planning", d: "Architectural design, master planning, residential, commercial and hospitality projects." },
+      { s: "interior-design", k: ["Residential interiors", "Commercial interiors", "Hospitality interiors", "Bespoke interior solutions"], n: "Interior Design", d: "Residential, commercial, hospitality and bespoke interior solutions." },
+      { s: "construction-turnkey", k: ["Complete construction", "Material contracts", "Civil works", "Finishing"], n: "Construction & Turnkey", d: "Complete construction, material contracts, civil works and finishing." },
+      { s: "pmc", k: ["Project planning", "Cost management", "Tendering", "Quality control", "Site supervision", "Project coordination"], n: "PMC – Project Management Consultancy", d: "Project planning, cost management, tendering, quality control, site supervision and project coordination." },
+      { s: "development-infrastructure", k: ["Colony development", "Township planning", "Infrastructure", "Land development"], n: "Development & Infrastructure", d: "Colony development, township planning, infrastructure and land development." },
+      { s: "bim-digital", k: ["BIM modeling", "Revit", "Construction documentation", "Coordination", "International outsourcing"], n: "BIM & Digital Services", d: "BIM modeling, Revit, construction documentation, coordination and international outsourcing." }
     ],
     POSTS: [
       { s: "precision-in-practice", n: "Precision in Practice", d: "Detail and discipline behind every successful build.", i: 3, b: ["A building is only as good as its details. Every junction, edge and joint is decided on paper long before it is built.", "Clear drawings and early coordination with engineers and contractors keep surprises off site.", "Precision is a habit we practise on every project, large or small."] },

@@ -20,6 +20,9 @@
       return '<a class="fade" href="post.html?p=' + p.s + '">' + im(p.i, p.n) + '<h3>' + p.n + '</h3><p>' + p.d + '</p></a>';
     }).join("") + '</div>';
   }
+  function verts() {
+    return '<div class="verts">' + D.SERVICES.map(function (s, i) { return '<a class="fade" href="service.html?p=' + s.s + '"><span>0' + (i + 1) + '</span><h3>' + s.n + '</h3><p>' + s.d + '</p><em>View details →</em></a>'; }).join("") + '</div>';
+  }
   function legal(t, paras) { return ph("LEGAL", t) + '<section class="wrap prose">' + paras.map(function (x) { return '<p>' + x + '</p>'; }).join("") + '</section>'; }
   function find(arr) { return arr.filter(function (x) { return x.s === q; })[0] || arr[0]; }
 
@@ -38,9 +41,15 @@
         '<section class="wrap"><a class="next" href="project.html?p=' + nx.s + '"><span>NEXT PROJECT</span><h2>' + nx.n + '</h2></a></section>';
     },
     services: function () {
-      return ph("SERVICES", "From vision to built reality.", "A structured approach that turns ideas into precise, functional and enduring architecture.") +
-        '<section class="wrap"><div class="steps">' + D.SERVICES.map(function (s, i) { return '<article class="fade"><span>0' + (i + 1) + '</span><h3>' + s.n + '</h3><p>' + s.d + '</p></article>'; }).join("") + '</div></section>' +
+      return ph("OUR EXPERTISE", "6 Business Verticals.", "Architecture, interiors, construction, project management, development and digital services under one roof.") +
+        '<section class="wrap">' + verts() + '</section>' +
         '<section class="wrap"><p class="eyebrow">BEFORE WE BEGIN</p><h2>Answers. Defined by precision.</h2>' + faq() + '</section>';
+    },
+    service: function () {
+      var s = find(D.SERVICES), i = D.SERVICES.indexOf(s), nx = D.SERVICES[(i + 1) % D.SERVICES.length];
+      return ph("EXPERTISE 0" + (i + 1), s.n, s.d) +
+        '<section class="wrap split"><div><h2>What we cover</h2><ul class="klist">' + s.k.map(function (x) { return '<li>' + x + '</li>'; }).join("") + '</ul><p style="margin-top:2rem"><a class="btn" href="contact.html">Discuss your project</a></p></div>' + im(i, s.n, "ph tall") + '</section>' +
+        '<section class="wrap"><a class="next" href="service.html?p=' + nx.s + '"><span>NEXT VERTICAL</span><h2>' + nx.n + '</h2></a></section>';
     },
     team: function () {
       return ph("MEET THE STUDIO", "One team. Every project.", "Architects, designers and technical specialists united by a commitment to clarity and excellence.") +
@@ -70,11 +79,11 @@
 
   if (page === "home") {
     var set = function (id, h) { var e = document.getElementById(id); if (e) e.innerHTML = h; };
-    set("projList", plist()); set("partners", partners()); set("posts", posts()); set("faq", faq());
+    set("projList", plist()); set("verts", verts()); set("partners", partners()); set("posts", posts()); set("faq", faq());
     document.querySelectorAll("img[data-img]").forEach(function (e) { e.setAttribute("data-src", D.IMG[e.getAttribute("data-img")]); });
   } else if (R[page]) {
     main.innerHTML = R[page]();
-    document.title = (page === "project" ? find(D.PROJECTS).n : page === "post" ? find(D.POSTS).n : page.replace(/-/g, " ").replace(/^./, function (c) { return c.toUpperCase(); })) + " | Mitrakar Architectural Designers";
+    document.title = (page === "project" ? find(D.PROJECTS).n : page === "post" ? find(D.POSTS).n : page === "service" ? find(D.SERVICES).n : page.replace(/-/g, " ").replace(/^./, function (c) { return c.toUpperCase(); })) + " | Mitrakar Architectural Designers";
   }
 
   document.querySelectorAll("img[data-src]").forEach(function (e) {
@@ -97,7 +106,7 @@
     a.addEventListener("mousemove", function (e) { pv.style.left = Math.min(e.clientX + 30, window.innerWidth - 330) + "px"; pv.style.top = (e.clientY - 120) + "px"; });
   });
 
-  document.querySelectorAll(".steps article,.team div,.pillars li").forEach(function (e) { e.classList.add("fade"); });
+  document.querySelectorAll(".steps article,.verts article,.team div,.pillars li").forEach(function (e) { e.classList.add("fade"); });
   var els = document.querySelectorAll(".fade");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (es) { es.forEach(function (x) { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }); }, { threshold: 0.1 });

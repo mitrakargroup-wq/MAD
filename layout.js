@@ -6,7 +6,7 @@
   var foot = '<footer><div class="wrap fgrid"><div><img src="assets/logo.png" alt="" class="flogo"><h3>Designing the future of space.</h3></div>' +
     '<div><h4>Contact us</h4><p><a href="tel:+917071723383">+91 70717 23383</a></p><p>17/2 New Palasia,<br>Indore, Madhya Pradesh 452001</p><p><a target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Mitrakar+Architectural+Designers+17%2F2+New+Palasia+Indore">View on map</a></p></div>' +
     '<div><h4>Site map</h4><p><a href="about.html">About</a></p><p><a href="services.html">Services</a></p><p><a href="projects.html">Projects</a></p><p><a href="team.html">Team</a></p><p><a href="blog.html">Blog</a></p></div>' +
-    '<div><h4>Projects</h4>' + D.PROJECTS.slice(0, 3).map(function (p) { return '<p><a href="project.html?p=' + p.s + '">' + p.n + '</a></p>'; }).join("") + '</div></div>' +
+    '<div><h4>Expertise</h4>' + D.SERVICES.map(function (s) { return '<p><a href="service.html?p=' + s.s + '">' + s.n.replace('PMC – Project Management Consultancy', 'PMC') + '</a></p>'; }).join("") + '</div></div>' +
     '<p class="copy">© ' + new Date().getFullYear() + ' Mitrakar Architectural Designers · <a href="privacy-policy.html">Privacy</a> · <a href="cookie.html">Cookies</a> · <a href="terms-and-conditions.html">Terms</a></p></footer>';
   document.getElementById("hdr").innerHTML = nav;
   document.getElementById("ftr").innerHTML = foot;

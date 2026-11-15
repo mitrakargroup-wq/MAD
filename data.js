@@ -3,38 +3,67 @@ var D = (function () {
   var U = function (id) { return "https://images.unsplash.com/" + id + "?auto=format&fit=crop&w=1600&q=70"; };
   var P = ["photo-1486406146926-c627a92ad1ab","photo-1503387762-592deb58ef4e","photo-1487958449943-2429e8be8625","photo-1518005020951-eccb494ad742","photo-1511818966892-d7d671e672a2","photo-1545324418-cc1a3fa10c00"].map(U);
   return {
+    // ---- CONFIGURATION ----
+    // FORM_ENDPOINT: paste your Formspree (or similar) endpoint, e.g. "https://formspree.io/f/xxxxxxx".
+    // While empty, forms open the visitor's email app instead and never show a fake "sent" message.
+    CFG: { FORM_ENDPOINT: "", EMAIL: "mitrakargroup@gmail.com", PHONE: "+91 70717 23383", TEL: "+917071723383", WA: "https://wa.me/917071723383", ADDR: "17/2 New Palasia, Indore, Madhya Pradesh, India", MAP: "Mitrakar Architectural Designers 17/2 New Palasia Indore" },
     P: P,
-    IMG: { hero: P[0], about: P[1], cta: P[2], j1: P[3], j2: P[4], j3: P[5] },
-    PROJECTS: [
-      { s: "residence-one", n: "Residence One", l: "Indore", y: "2024", t: "Residential", a: "4,200 sq ft", i: 4, d: "A private home organised around a central courtyard, balancing privacy with daylight and cross-ventilation suited to Indore's climate." },
-      { s: "commercial-block", n: "Commercial Block", l: "Indore", y: "2023", t: "Commercial", a: "18,000 sq ft", i: 0, d: "A mixed retail and office block with a clean, repeatable facade and efficient floor plates." },
-      { s: "courtyard-house", n: "Courtyard House", l: "Madhya Pradesh", y: "2023", t: "Residential", a: "5,600 sq ft", i: 2, d: "A low-rise family house that opens onto landscaped terraces and shaded outdoor rooms." },
-      { s: "office-interiors", n: "Office Interiors", l: "Indore", y: "2022", t: "Interiors", a: "7,500 sq ft", i: 5, d: "A workplace interior built around natural light, acoustic comfort and flexible planning." },
-      { s: "studio-pavilion", n: "Studio Pavilion", l: "Madhya Pradesh", y: "2025", t: "Hospitality", a: "3,000 sq ft", i: 1, d: "A compact pavilion for gatherings, designed with simple materials and strong lines." }
-    ],
-    TEAM: [
-      { n: "Principal Architect", r: "Design Direction", c: "Leads concept and design strategy across every project." },
-      { n: "Senior Architect", r: "Residential & Commercial", c: "Develops drawings and coordinates consultants." },
-      { n: "Project Manager", r: "Site & Execution", c: "Runs schedules, vendors and quality on site." },
-      { n: "Interior Designer", r: "Interiors & Detailing", c: "Shapes materials, joinery and finishes." }
-    ],
-    PARTNERS: [
-      { n: "Urban Developers", i: 3 }, { n: "Industrial Partners", i: 0 },
-      { n: "Hospitality Group", i: 2 }, { n: "Residential Clients", i: 4 }
+    PATHS: [
+      { k: "design", n: "Architecture & Interior Design" },
+      { k: "construction", n: "Construction & Turnkey Projects" },
+      { k: "pmc", n: "Project Management Consultancy (PMC)" },
+      { k: "development", n: "Land Development & Developer Partnerships" },
+      { k: "bim", n: "International BIM Outsourcing" }
     ],
     SERVICES: [
-      { s: "architecture-planning", k: ["Architectural design", "Master planning", "Residential projects", "Commercial projects", "Hospitality projects"], n: "Architecture & Planning", d: "Architectural design, master planning, residential, commercial and hospitality projects." },
-      { s: "interior-design", k: ["Residential interiors", "Commercial interiors", "Hospitality interiors", "Bespoke interior solutions"], n: "Interior Design", d: "Residential, commercial, hospitality and bespoke interior solutions." },
-      { s: "construction-turnkey", k: ["Complete construction", "Material contracts", "Civil works", "Finishing"], n: "Construction & Turnkey", d: "Complete construction, material contracts, civil works and finishing." },
-      { s: "pmc", k: ["Project planning", "Cost management", "Tendering", "Quality control", "Site supervision", "Project coordination"], n: "PMC – Project Management Consultancy", d: "Project planning, cost management, tendering, quality control, site supervision and project coordination." },
-      { s: "development-infrastructure", k: ["Colony development", "Township planning", "Infrastructure", "Land development"], n: "Development & Infrastructure", d: "Colony development, township planning, infrastructure and land development." },
-      { s: "bim-digital", k: ["BIM modeling", "Revit", "Construction documentation", "Coordination", "International outsourcing"], n: "BIM & Digital Services", d: "BIM modeling, Revit, construction documentation, coordination and international outsourcing." }
+      { s: "architecture-urban-planning", u: "architecture-urban-planning.html", e: "design", n: "Architecture & Urban Planning", t: "Architecture & Urban Planning",
+        d: "Architectural design and planning for residential, commercial, hospitality and institutional projects.",
+        m: "Architects in Indore: architectural design, master planning, urban planning and 3D visualization by Mitrakar Architectural Designers.",
+        k: ["Architectural Design","Residential Architecture","Commercial Architecture","Hospitality Architecture","Institutional Architecture","Master Planning","Urban Planning","Landscape Planning","3D Visualization"] },
+      { s: "interior-design", u: "interior-design.html", e: "design", n: "Interior Design", t: "Interior Design",
+        d: "Interior solutions for homes, offices, hospitality and retail spaces, from concept through execution.",
+        m: "Interior designers in Indore: residential, commercial, hospitality, office and retail interiors with execution by Mitrakar.",
+        k: ["Residential Interiors","Commercial Interiors","Hospitality Interiors","Office & Corporate Interiors","Retail Interiors","Furniture & Lighting Design","Interior Execution"] },
+      { s: "construction-turnkey-solutions", u: "construction-turnkey-solutions.html", e: "construction", n: "Construction & Turnkey", t: "Construction & Turnkey Solutions",
+        d: "Construction delivery with integrated design-build coordination, from civil works to finishing.",
+        m: "Turnkey construction company in Indore: turnkey, civil and finishing works, renovation and integrated design-build solutions.",
+        k: ["Turnkey Construction","Construction with Material","Civil Construction","Structural & Finishing Works","Renovation & Redevelopment","Integrated Design-Build Solutions"] },
+      { s: "project-management-consultancy", u: "project-management-consultancy.html", e: "pmc", n: "Project Management Consultancy", t: "Project Management Consultancy (PMC)",
+        d: "Independent planning, cost control and site supervision to keep projects on schedule and on budget.",
+        m: "Project management consultancy (PMC) in India: scheduling, cost management, tendering, quality control and site supervision.",
+        k: ["Project Planning & Scheduling","Cost Management","Tendering & Contract Management","Quality Control","Site Supervision","Contractor Coordination","Project Monitoring","Project Execution Management"] },
+      { s: "development-infrastructure", u: "development-infrastructure.html", e: "development", n: "Development & Infrastructure", t: "Development & Infrastructure",
+        d: "Planning and consultancy for colonies, townships and land development projects.",
+        m: "Land development consultancy and colony development in Madhya Pradesh: township planning, layouts, infrastructure and feasibility.",
+        k: ["Colony Development","Township Planning","Land Development","Residential Layout Planning","Infrastructure Development","Roads & Site Development","Development Consultancy","Project Feasibility & DPR"] },
+      { s: "bim-digital-engineering", u: "global-bim-services.html", e: "bim", n: "BIM & Digital Engineering", t: "BIM & Digital Engineering",
+        d: "BIM and documentation support for architecture and construction firms in international markets.",
+        m: "Global BIM services from India: BIM modeling, Revit support, construction documentation and coordination for international firms.",
+        k: ["BIM Modeling","Revit Architecture","3D BIM","Construction Documentation","Working Drawings","Clash Detection","BIM Coordination","Architectural Drafting","BIM Outsourcing","Revit Modeling Support"] }
+    ],
+    INDS: [
+      { s: "education", n: "Education & Institutional", d: "Schools, Colleges and Training Institutes", i: 1 },
+      { s: "hospitality", n: "Hospitality & Leisure", d: "Hotels, Resorts and Restaurants", i: 2 },
+      { s: "entertainment", n: "Entertainment & Recreation", d: "Waterparks, Amusement Parks and Recreational Facilities", i: 3 },
+      { s: "residential", n: "Residential Development", d: "Villas, Apartments and Housing Projects", i: 4 },
+      { s: "commercial", n: "Commercial & Retail", d: "Offices, Shopping Complexes and Showrooms", i: 0 },
+      { s: "healthcare", n: "Healthcare", d: "Hospitals, Clinics and Healthcare Facilities", i: 5 }
+    ],
+    CATS: ["Architecture","Interiors","Institutional","Hospitality","Resorts","Waterparks","Residential","Commercial","PMC","Construction","Development"],
+    // PLACEHOLDER projects: replace with real project records (ph:true shows a "Placeholder" badge).
+    // st must be one of: "Completed", "Ongoing", "Concept / Proposed" (or "Status TBC" until confirmed).
+    PROJECTS: [
+      { s: "residence-one", n: "Residence One", l: "Location TBC", y: "Year TBC", st: "Status TBC", c: ["Architecture","Residential"], v: ["Architecture & Urban Planning","Interior Design"], a: "Area TBC", i: 4, ph: true, d: "Placeholder entry. Replace this description with the real project brief, scope and outcome." },
+      { s: "commercial-block", n: "Commercial Block", l: "Location TBC", y: "Year TBC", st: "Status TBC", c: ["Architecture","Commercial"], v: ["Architecture & Urban Planning"], a: "Area TBC", i: 0, ph: true, d: "Placeholder entry. Replace this description with the real project brief, scope and outcome." },
+      { s: "courtyard-house", n: "Courtyard House", l: "Location TBC", y: "Year TBC", st: "Status TBC", c: ["Architecture","Residential"], v: ["Architecture & Urban Planning","Construction & Turnkey Solutions"], a: "Area TBC", i: 2, ph: true, d: "Placeholder entry. Replace this description with the real project brief, scope and outcome." },
+      { s: "office-interiors", n: "Office Interiors", l: "Location TBC", y: "Year TBC", st: "Status TBC", c: ["Interiors","Commercial"], v: ["Interior Design"], a: "Area TBC", i: 5, ph: true, d: "Placeholder entry. Replace this description with the real project brief, scope and outcome." },
+      { s: "studio-pavilion", n: "Studio Pavilion", l: "Location TBC", y: "Year TBC", st: "Status TBC", c: ["Architecture","Hospitality"], v: ["Architecture & Urban Planning"], a: "Area TBC", i: 1, ph: true, d: "Placeholder entry. Replace this description with the real project brief, scope and outcome." }
     ],
     POSTS: [
-      { s: "precision-in-practice", n: "Precision in Practice", d: "Detail and discipline behind every successful build.", i: 3, b: ["A building is only as good as its details. Every junction, edge and joint is decided on paper long before it is built.", "Clear drawings and early coordination with engineers and contractors keep surprises off site.", "Precision is a habit we practise on every project, large or small."] },
-      { s: "modern-residential-design", n: "Modern Residential Design", d: "Contemporary living shaped by clarity and function.", i: 4, b: ["A good home starts with how a family actually lives. We plan rooms around routines, light and views.", "In Indore's climate, shaded openings, courtyards and cross-ventilation make homes more comfortable.", "Simple materials, honestly used, give homes that age well."] },
-      { s: "the-power-of-space", n: "The Power of Space", d: "How architecture influences experience and emotion.", i: 5, b: ["Proportion, light and sequence shape how a place feels long before anyone notices the finishes.", "We design transitions as carefully as rooms: entrances, corridors and thresholds.", "Space that feels right is rarely accidental."] },
-      { s: "from-concept-to-build", n: "From Concept to Build", d: "Turning ideas into precise architectural reality.", i: 0, b: ["Every project moves through discovery, concept, development and execution.", "Review points at each stage keep clients informed and decisions clear.", "Keeping design and execution in one team protects the original idea."] }
+      { s: "precision-in-practice", n: "Precision in Practice", d: "Detail and discipline behind every successful build.", i: 3, b: ["A building is only as good as its details. Every junction, edge and joint is decided on paper long before it is built.", "Clear drawings and early coordination with engineers and contractors keep surprises off site.", "Precision is a habit practised on every project, large or small."] },
+      { s: "modern-residential-design", n: "Modern Residential Design", d: "Contemporary living shaped by clarity and function.", i: 4, b: ["A good home starts with how a family actually lives. Rooms are planned around routines, light and views.", "In a warm climate, shaded openings, courtyards and cross-ventilation make homes more comfortable.", "Simple materials, honestly used, give homes that age well."] },
+      { s: "the-power-of-space", n: "The Power of Space", d: "How architecture influences experience and emotion.", i: 5, b: ["Proportion, light and sequence shape how a place feels long before anyone notices the finishes.", "Transitions deserve as much care as rooms: entrances, corridors and thresholds.", "Space that feels right is rarely accidental."] },
+      { s: "from-concept-to-build", n: "From Concept to Build", d: "Turning ideas into precise architectural reality.", i: 0, b: ["Every project moves through planning, design, construction and management.", "Review points at each stage keep clients informed and decisions clear.", "Keeping design and execution connected protects the original idea."] }
     ]
   };
 })();
